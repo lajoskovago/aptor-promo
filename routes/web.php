@@ -16,3 +16,4 @@ Route::get('/', function () {
 });
 
 Route::resource('hotels','HotelController');
+Route::resource('services','ServiceController');

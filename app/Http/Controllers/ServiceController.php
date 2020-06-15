@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Hotel;
+use App\Service;
 use Illuminate\Http\Request;
 
-class HotelController extends Controller
+class ServiceController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +14,9 @@ class HotelController extends Controller
      */
     public function index()
     {
-        $hotels = Hotel::latest()->paginate(5);
+        $services = Service::latest()->paginate(5);
 
-        return view('hotels.index',compact('hotels'))
+        return view('services.index',compact('services'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
@@ -27,7 +27,7 @@ class HotelController extends Controller
      */
     public function create()
     {
-        return view('hotels.create');
+        return view('services.create');
     }
 
     /**
@@ -45,42 +45,42 @@ class HotelController extends Controller
             'email_contact' => 'required',
         ]);
 
-        Hotel::create($request->all());
+        Service::create($request->all());
 
-        return redirect()->route('hotels.index')
+        return redirect()->route('services.index')
                         ->with('success','Product created successfully.');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Hotel  $hotel
+     * @param  \App\Service  $service
      * @return \Illuminate\Http\Response
      */
-    public function show(hotel $hotel)
+    public function show(service $service)
     {
-        return view('hotels.show',compact('hotel'));
+        return view('services.show',compact('service'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Hotel  $hotel
+     * @param  \App\Service  $service
      * @return \Illuminate\Http\Response
      */
-    public function edit(Hotel $hotel)
+    public function edit(Service $service)
     {
-        return view('hotels.edit',compact('hotel'));
+        return view('services.edit',compact('service'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Hotel  $hotel
+     * @param  \App\Service  $service
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Hotel $hotel)
+    public function update(Request $request, Service $service)
     {
         $request->validate([
             'nume' => 'required',
@@ -89,23 +89,23 @@ class HotelController extends Controller
             'email_contact' => 'required',
         ]);
 
-        $hotel->update($request->all());
+        $service->update($request->all());
 
-        return redirect()->route('hotels.index')
-                        ->with('success','Hotel updated successfully');
+        return redirect()->route('services.index')
+                        ->with('success','Service updated successfully');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Hotel  $hotel
+     * @param  \App\Service  $service
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Hotel $hotel)
+    public function destroy(Service $service)
     {
-        $hotel->delete();
+        $service->delete();
 
-        return redirect()->route('hotels.index')
+        return redirect()->route('services.index')
                         ->with('success','Product deleted successfully');
     }
 }
