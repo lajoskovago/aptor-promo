@@ -3,10 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Hotel;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Auth;
+use View;
 
 class HotelController extends Controller
 {
+
+  public function __construct()
+    {
+
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,9 +23,29 @@ class HotelController extends Controller
      */
     public function index()
     {
+// echo 'tmp error';
+
+//       $url = 'http://www.otlra.ro/ep/otl_income.php';
+// $data = array('codetest');
+
+// // use key 'http' even if you send the request to https://...
+// $options = array(
+//     'http' => array(
+//         'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
+//         'method'  => 'POST',
+//         'content' => http_build_query($data)
+//     )
+// );
+// $context  = stream_context_create($options);
+// $result = file_get_contents($url, false, $context);
+// if ($result === FALSE) { /* Handle error */ }
+
+// var_dump($result);
+// exit;
+        $user = Auth::user();
         $hotels = Hotel::latest()->paginate(5);
 
-        return view('hotels.index',compact('hotels'))
+        return view('hotels.index',compact('hotels', 'user'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
@@ -27,7 +56,8 @@ class HotelController extends Controller
      */
     public function create()
     {
-        return view('hotels.create');
+      $user = Auth::user();
+        return view('hotels.create', compact('user'));
     }
 
     /**
@@ -38,17 +68,25 @@ class HotelController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+        $test = $request->validate([
             'nume' => 'required',
             'email' => 'required',
             'nume_contact' => 'required',
             'email_contact' => 'required',
+            'password' => 'required',
         ]);
 
-        Hotel::create($request->all());
-
+        $hotel = Hotel::create($request->all());
+        $input = $request->all();
+        User::create([
+            'name' => $input['nume'],
+            'email' => $input['email'],
+            'user_type' => 2,
+            'parent' => $hotel->id,
+            'password' => Hash::make($input['password']),
+        ]);
         return redirect()->route('hotels.index')
-                        ->with('success','Product created successfully.');
+                        ->with('success','Hotelul a fost adaugat cu succes');
     }
 
     /**
@@ -59,7 +97,8 @@ class HotelController extends Controller
      */
     public function show(hotel $hotel)
     {
-        return view('hotels.show',compact('hotel'));
+$user = Auth::user();
+        return view('hotels.show',compact('hotel', 'user'));
     }
 
     /**
@@ -70,7 +109,8 @@ class HotelController extends Controller
      */
     public function edit(Hotel $hotel)
     {
-        return view('hotels.edit',compact('hotel'));
+$user = Auth::user();
+        return view('hotels.edit',compact('hotel', 'user'));
     }
 
     /**

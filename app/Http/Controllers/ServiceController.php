@@ -3,7 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Service;
+use App\User;
+use App\CodeUsage;
+use App\Tourist;
+use Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class ServiceController extends Controller
 {
@@ -14,9 +19,27 @@ class ServiceController extends Controller
      */
     public function index()
     {
+        $user = Auth::user();
+
+        if (!$user) {
+
+            return redirect()->route('login');
+        }
+
+
+
         $services = Service::latest()->paginate(5);
 
-        return view('services.index',compact('services'))
+        foreach($services as $i => $key) {
+          $serviciiPrestate = CodeUsage::where('service_id', $key->id)->get();
+          $turisti = [];
+          foreach($serviciiPrestate as $prestari) {
+            $turisti[$prestari->promo_code] = 1;
+
+          }
+          $services[$i]->total = count($turisti);
+        }
+        return view('services.index',compact('services', 'user'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
@@ -27,7 +50,16 @@ class ServiceController extends Controller
      */
     public function create()
     {
-        return view('services.create');
+$user = Auth::user();
+
+        if (!$user) {
+
+            return redirect()->route('login');
+        }
+
+
+
+        return view('services.create', compact('user'));
     }
 
     /**
@@ -42,13 +74,22 @@ class ServiceController extends Controller
             'nume' => 'required',
             'email' => 'required',
             'nume_contact' => 'required',
+            'prenume_contact' => 'required',
             'email_contact' => 'required',
+            'password' => 'required',
         ]);
 
-        Service::create($request->all());
-
+        $service = Service::create($request->all());
+        $input = $request->all();
+        User::create([
+            'name' => $input['nume'],
+            'email' => $input['email'],
+            'user_type' => 3,
+            'parent' => $service->id,
+            'password' => Hash::make($input['password']),
+        ]);
         return redirect()->route('services.index')
-                        ->with('success','Product created successfully.');
+                        ->with('success','Prestatorul a fost adaugat cu succes');
     }
 
     /**
@@ -59,7 +100,15 @@ class ServiceController extends Controller
      */
     public function show(service $service)
     {
-        return view('services.show',compact('service'));
+$user = Auth::user();
+
+        if (!$user) {
+
+            return redirect()->route('login');
+        }
+
+
+        return view('services.show',compact('service', 'user'));
     }
 
     /**
@@ -70,7 +119,16 @@ class ServiceController extends Controller
      */
     public function edit(Service $service)
     {
-        return view('services.edit',compact('service'));
+
+$user = Auth::user();
+
+        if (!$user) {
+
+            return redirect()->route('login');
+        }
+
+
+        return view('services.edit',compact('service', 'user'));
     }
 
     /**
@@ -107,5 +165,26 @@ class ServiceController extends Controller
 
         return redirect()->route('services.index')
                         ->with('success','Product deleted successfully');
+    }
+
+    public function codeInput($touristId)
+    {
+        $user = Auth::user();
+
+        if (!$user) {
+
+            return redirect()->route('login');
+        }
+        $tourist = Tourist::find($touristId);
+        $serviciiFolosite = CodeUsage::where('promo_code', $tourist->promo_code)->get();
+
+        $prestatori = [];
+        foreach($serviciiFolosite as $key) {
+          $prestatori[$key->id] = $key->id;
+        }
+        $services = Service::whereIn('id', $prestatori)->paginate(5);
+
+        return view('services.index',compact('services', 'user'))
+            ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 }

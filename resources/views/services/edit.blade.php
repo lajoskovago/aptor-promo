@@ -1,5 +1,5 @@
-@extends('layout')
-  
+@extends('layouts/app')
+
 @section('content')
 <div class="row">
     <div class="col-lg-12 margin-tb">
@@ -7,11 +7,11 @@
             <h2>Edit service</h2>
         </div>
         <div class="pull-right">
-            <a class="btn btn-primary" href="{{ route('services.index') }}"> Back</a>
+            <a class="btn btn-primary" href="{{ url()->previous() }}"> Inapoi</a>
         </div>
     </div>
 </div>
-   
+
 @if ($errors->any())
     <div class="alert alert-danger">
         <strong>Whoops!</strong> There were some problems with your input.<br><br>
@@ -22,7 +22,7 @@
         </ul>
     </div>
 @endif
-   
+
 <form action="{{ route('services.update',$service->id) }}" method="POST">
 @csrf
 @method('PUT')
@@ -47,13 +47,19 @@
        </div>
    </div>
    <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>Prenume Contact:</strong>
+                <input type="text" name="prenume_contact" class="form-control" placeholder="Prenume persoana contact">
+            </div>
+        </div>
+   <div class="col-xs-12 col-sm-12 col-md-12">
        <div class="form-group">
            <strong>Email Contact:</strong>
            <input type="text" name="email_contact" class="form-control" placeholder="Email contact">
        </div>
    </div>
    <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-           <button type="submit" class="btn btn-primary">Submit</button>
+           <button type="submit" class="btn btn-primary">Update</button>
    </div>
 </div>
 </form>

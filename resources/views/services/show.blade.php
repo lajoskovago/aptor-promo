@@ -1,4 +1,5 @@
-@extends('layout')
+@extends('layouts/app')
+
 @section('content')
     <div class="row">
         <div class="col-lg-12 margin-tb">
@@ -6,11 +7,11 @@
                 <h2> Show service</h2>
             </div>
             <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('services.index') }}"> Back</a>
+                <a class="btn btn-primary" href="{{ url()->previous() }}"> Inapoi</a>
             </div>
         </div>
     </div>
-   
+
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
