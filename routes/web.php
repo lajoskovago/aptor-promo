@@ -36,6 +36,9 @@ Route::get('/options/create/{serviceId}', 'ServiceOptionController@create')->nam
 Route::get('/options/list/{serviceId}', 'ServiceOptionController@index')->name('options.index');
 Route::get('/options/edit/{serviceId}', 'ServiceOptionController@edit')->name('options.edit');
 
+Route::get('/emailconf', 'TouristController@email')->name('tourists.email');
+Route::post('/emailconfig', 'TouristController@emailconf')->name('tourists.emailconf');
+
 Auth::routes();
 
 Route::get('/home', 'TouristController@index')->name('home');

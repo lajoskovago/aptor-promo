@@ -1,12 +1,1 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>APTOR</title>
-</head>
-<body>
-    <h1>{{ $details['title'] }}</h1>
-    <p>{{ $details['body'] }}</p>
-
-    <p>Thank you</p>
-</body>
-</html>
+<p>Pentru inserare cod folositit in felul urmator:</p><p>Codul dumneavoastra este {{ $promo_code }}</p><p>Sistemul va schimba {{ $promo_code }} cu codul generat pentru client</p><p><br></p>

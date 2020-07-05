@@ -43,10 +43,10 @@ class HotelController extends Controller
 // var_dump($result);
 // exit;
         $user = Auth::user();
-        $hotels = Hotel::latest()->paginate(5);
+        $hotels = Hotel::get();
 
         return view('hotels.index',compact('hotels', 'user'))
-            ->with('i', (request()->input('page', 1) - 1) * 5);
+            ->with('i', 0);
     }
 
     /**

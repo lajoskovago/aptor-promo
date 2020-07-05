@@ -73,7 +73,7 @@
 .admin-check-sucess, .admin-check-pro{
 	color: #fff;
     position: absolute;
-    z-index: 99;
+    z-index: 9;
     width: 50px;
     height: 100%;
     top: 0px;

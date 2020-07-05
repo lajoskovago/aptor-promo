@@ -17,155 +17,244 @@
     <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
     <!-- Google Fonts
         ============================================ -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i,800" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700,900" rel="stylesheet">
 
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  <!-- Bootstrap CSS
+  <!-- CSS
         ============================================ -->
 
-    <!-- Bootstrap CSS
-        ============================================ -->
+    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet">
-    <!-- adminpro icon CSS
-        ============================================ -->
-    <link href="{{ asset('css/adminpro-custon-icon.css') }}" rel="stylesheet">
-    <!-- meanmenu icon CSS
-        ============================================ -->
-    <link href="{{ asset('css/meanmenu.min.css') }}" rel="stylesheet">
-    <!-- mCustomScrollbar CSS
-        ============================================ -->
-    <link href="{{ asset('css/jquery.mCustomScrollbar.min.css') }}" rel="stylesheet">
-    <!-- animate CSS
-        ============================================ -->
+    <link href="{{ asset('css/owl.carousel.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/owl.theme.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/owl.transitions.css') }}" rel="stylesheet">
     <link href="{{ asset('css/animate.css') }}" rel="stylesheet">
-    <!-- normalize CSS
-        ============================================ -->
     <link href="{{ asset('css/normalize.css') }}" rel="stylesheet">
-    <!-- form CSS
-        ============================================ -->
-    <link href="{{ asset('css/form.css') }}" rel="stylesheet">
-    <!-- style CSS
-        ============================================ -->
-    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
-    <!-- responsive CSS
-        ============================================ -->
-    <link href="{{ asset('css/responsive.css') }}" rel="stylesheet">
-    <!-- modals CSS
-        ============================================ -->
-    <link href="{{ asset('css/modals.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/meanmenu.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/main.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/educate-custon-icon.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/morrisjs/morris.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/scrollbar/jquery.mCustomScrollbar.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/metisMenu/metisMenu.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/metisMenu/metisMenu-vertical.css') }}" rel="stylesheet">
+<link href="{{ asset('css/calendar/fullcalendar.min.css') }}" rel="stylesheet">
+<link href="{{ asset('css/calendar/fullcalendar.print.min.css') }}" rel="stylesheet">
+<link href="{{ asset('css/editor/select2.css') }}" rel="stylesheet">
+<link href="{{ asset('css/editor/datetimepicker.css') }}" rel="stylesheet">
+<link href="{{ asset('css/editor/bootstrap-editable.css') }}" rel="stylesheet">
+<link href="{{ asset('css/editor/x-editor-style.css') }}" rel="stylesheet">
+<link href="{{ asset('css/data-table/bootstrap-table.css') }}" rel="stylesheet">
+<link href="{{ asset('css/data-table/bootstrap-editable.css') }}" rel="stylesheet">
+<link href="{{ asset('css/responsive.css') }}" rel="stylesheet">
+<link href="{{ asset('css/style.css') }}" rel="stylesheet">
+<link href="{{ asset('css/summernote/summernote.css') }}" rel="stylesheet">
 
-    <link href="{{ asset('css/data-table/bootstrap-table.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/data-table/bootstrap-editable.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/c3.min.css') }}" rel="stylesheet">
-    <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+<script src="{{ asset('js/vendor/modernizr-2.8.3.min.js') }}" defer></script>
+
 </head>
 <body>
-    <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'APTOR') }}
-                </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+<div class="all-content-wrapper">
+        <div class="header-advance-area">
+            <div class="header-top-area">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="header-top-wraper">
+                                <div class="row">
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
+                                    <div class="col-lg-6 col-md-7 col-sm-6 col-xs-12">
+                                        <div class="header-top-menu tabl-d-n">
+                                            <ul class="nav navbar-nav mai-top-nav">
+                                              @guest
 
-                    </ul>
+                                              @else
 
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
-                        <!-- Authentication Links -->
-                        @guest
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                            </li>
+                                              @if(isset($user))
+                                              @if($user && $user['user_type'] == 1)
+                                                <li class="nav-item">
+                                                      <a class="nav-link" href="{{ route('hotels.index') }}">Lista Hoteluri</a>
+                                                  </li>
+                                                  <li class="nav-item">
+                                                      <a class="nav-link" href="{{ route('hotels.create') }}">Adaugare hotel</a>
+                                                  </li>
+                                                <li class="nav-item">
+                                                      <a class="nav-link" href="{{ route('tourists.index', 0) }}">Lista Turisti</a>
+                                                  </li>
+                                                <li class="nav-item">
+                                                      <a class="nav-link" href="{{ route('services.index', 0) }}">Lista Prestatori</a>
+                                                  </li>
+                                                <li class="nav-item">
+                                                      <a class="nav-link" href="{{ route('tourists.code') }}">Verificare Cod</a>
+                                                  </li>
+                                                <li class="nav-item">
+                                                      <a class="nav-link" href="{{ route('tourists.email') }}">Configurare email</a>
+                                                  </li>
 
-                        @else
-                        @if(isset($user))
-                        @if($user && $user['user_type'] == 1)
-                          <li class="nav-item">
-                                <a class="nav-link" href="{{ route('hotels.index') }}">Lista Hoteluri</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('hotels.create') }}">Adaugare hotel</a>
-                            </li>
-                           <li class="nav-item">
-                                <a class="nav-link" href="{{ route('tourists.index', 0) }}">Lista Turisti</a>
-                            </li>
-                          <li class="nav-item">
-                                <a class="nav-link" href="{{ route('services.index', 0) }}">Lista Prestatori</a>
-                            </li>
-                          <li class="nav-item">
-                                <a class="nav-link" href="{{ route('tourists.code') }}">Verificare Cod</a>
-                            </li>
+                                              @endif
+                                              @if($user && $user['user_type'] == 2)
+                                                <li class="nav-item">
+                                                      <a class="nav-link" href="{{ route('tourists.index', 0) }}">Lista Turisti</a>
+                                                  </li>
+                                                <li class="nav-item">
+                                                      <a class="nav-link" href="{{ route('tourists.create', $user->parent) }}">Adaugare turist</a>
+                                                  </li>
+                                                <li class="nav-item">
+                                                      <a class="nav-link" href="{{ route('tourists.code') }}">Verificare Cod</a>
+                                                  </li>
 
-                        @endif
-                        @if($user && $user['user_type'] == 2)
-                          <li class="nav-item">
-                                <a class="nav-link" href="{{ route('tourists.index', 0) }}">Lista Turisti</a>
-                            </li>
-                          <li class="nav-item">
-                                <a class="nav-link" href="{{ route('tourists.create', $user->parent) }}">Adaugare turist</a>
-                            </li>
-                          <li class="nav-item">
-                                <a class="nav-link" href="{{ route('tourists.code') }}">Verificare Cod</a>
-                            </li>
+                                              @endif
+                                              @if($user && $user['user_type'] == 3)
+                                                <li class="nav-item">
+                                                      <a class="nav-link" href="{{ route('tourists.index', 0) }}">Lista Turisti</a>
+                                                  </li>
+                                                <li class="nav-item">
+                                                      <a class="nav-link" href="{{ route('options.index', $user->parent) }}">Lista Servicii</a>
+                                                  </li>
+                                                <li class="nav-item">
+                                                      <a class="nav-link" href="{{ route('options.create', $user->parent) }}">Adaugare Serviciu</a>
+                                                  </li>
+                                                <li class="nav-item">
+                                                      <a class="nav-link" href="{{ route('tourists.code') }}">Verificare Cod</a>
+                                                  </li>
+                                              @endif
+                                              @endif
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
+                                        <div class="header-right-info">
+                                            <ul class="nav navbar-nav mai-top-nav header-right-menu">
 
-                        @endif
-                        @if($user && $user['user_type'] == 3)
-                          <li class="nav-item">
-                                <a class="nav-link" href="{{ route('tourists.index', 0) }}">Lista Turisti</a>
-                            </li>
-                          <li class="nav-item">
-                                <a class="nav-link" href="{{ route('options.index', $user->parent) }}">Lista Servicii</a>
-                            </li>
-                          <li class="nav-item">
-                                <a class="nav-link" href="{{ route('options.create', $user->parent) }}">Adaugare Serviciu</a>
-                            </li>
-                          <li class="nav-item">
-                                <a class="nav-link" href="{{ route('tourists.code') }}">Verificare Cod</a>
-                            </li>
-                        @endif
-                        @endif
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
+                                                <li class="nav-item">
+                                                    <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle">
 
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
+                                                      <span class="admin-name">{{ Auth::user()->name }}</span>
+                                                      <i class="fa fa-angle-down edu-icon edu-down-arrow"></i>
+                                                    </a>
+                                                    <ul role="menu" class="dropdown-header-top author-log dropdown-menu animated zoomIn">
+                                                        <li class="nav-item dropdown">
+                                                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                                               <a class="dropdown-item" href="{{ route('logout') }}"
+                                                                  onclick="event.preventDefault();
+                                                                                document.getElementById('logout-form').submit();">
+                                                                    {{ __('Logout') }}
+                                                                </a>
 
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
-                                    </form>
+                                                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                                                    @csrf
+                                                                </form>
+                                                            </a>
+
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                              @endguest
+                                            </ul>
+                                        </div>
+                                    </div>
                                 </div>
-                            </li>
-                        @endguest
-                    </ul>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </nav>
+            <!-- Mobile Menu start -->
+            <div class="mobile-menu-area">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="mobile-menu">
+                                <nav id="dropdown">
+                                    <ul class="mobile-menu-nav">
 
-        <main class="py-4">
+                                         @guest
+                                         <li><a href="{{ route('login') }}">{{ __('Login') }}</a></li>
 
-        </main>
-        <div class="container">
-        <div class="card">
-          <div class="card-body">@yield('content')</div>
+                                              @else
+                                              @if(isset($user))
+                                              @if($user && $user['user_type'] == 1)
+                                              <li><a href="{{ route('hotels.index') }}">Lista Hoteluri</a></li>
+                                              <li><a href="{{ route('hotels.create') }}">Adaugare hotel</a></li>
+                                              <li><a href="{{ route('tourists.index', 0) }}">Lista Turisti</a></li>
+                                              <li><a href="{{ route('tourists.code') }}">Verificare Cod</a></li>
+                                              <a  href="{{ route('logout') }}"
+                                                                  onclick="event.preventDefault();
+                                                                                document.getElementById('logout-form').submit();">
+                                                                    {{ __('Logout') }}
+                                                                </a>
+
+                                                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                                                    @csrf
+                                                                </form>
+
+                                              @endif
+                                              @if($user && $user['user_type'] == 2)
+                                               <li><a href="{{ route('tourists.index', 0) }}">Lista Turisti</a></li>
+                                              <li><a href="{{ route('tourists.create', $user->parent) }}">Adaugare turist</a></li>
+                                              <li><a href="{{ route('tourists.code') }}">Verificare Cod</a></li>
+                                              <a  href="{{ route('logout') }}"
+                                                                  onclick="event.preventDefault();
+                                                                                document.getElementById('logout-form').submit();">
+                                                                    {{ __('Logout') }}
+                                                                </a>
+
+                                                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                                                    @csrf
+                                                                </form>
+
+                                              @endif
+                                              @if($user && $user['user_type'] == 3)
+                                               <li><a href="{{ route('tourists.index', 0) }}">Lista Turisti</a></li>
+                                              <li><a href="{{ route('options.index', $user->parent) }}">Lista Servicii</a></li>
+                                              <li><a href="{{ route('options.create', $user->parent) }}">Adaugare Serviciu</a></li>
+                                              <li><a href="{{ route('tourists.code') }}">Verificare Cod</a></li>
+                                              <a  href="{{ route('logout') }}"
+                                                                  onclick="event.preventDefault();
+                                                                                document.getElementById('logout-form').submit();">
+                                                                    {{ __('Logout') }}
+                                                                </a>
+
+                                                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                                                    @csrf
+                                                                </form>
+
+                                              @endif
+                                              @endif
+                                          @endguest
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @guest
+            @else
+            <div class="breadcome-area">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="breadcome-list single-page-breadcome">
+                                <div class="row">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @endguest
         </div>
+
+
+
+<!------------------------------------------------------------------------------------------------------- -->
+
+
+
+        @yield('content')
 
         </div>
     </div>
-
     <script src="{{ asset('js/data-table/bootstrap-table.js') }}" defer></script>
     <script src="{{ asset('js/data-table/tableExport.js') }}" defer></script>
     <script src="{{ asset('js/data-table/data-table-active.js') }}" defer></script>
@@ -175,7 +264,27 @@
     <script src="{{ asset('js/data-table/bootstrap-editable.js') }}" defer></script>
     <script src="{{ asset('js/data-table/colResizable-1.5.source.js') }}" defer></script>
 
+    <script src="{{ asset('js/vendor/jquery-1.12.4.min.js') }}" defer></script>
+    <script src="{{ asset('js/bootstrap.min.js') }}" defer></script>
+    <script src="{{ asset('js/summernote/summernote.min.js') }}" defer></script>
+    <script src="{{ asset('js/summernote/summernote-active.js') }}" defer></script>
+    <script src="{{ asset('js/plugins.js') }}" defer></script>
+    <script src="{{ asset('') }}" defer></script>
+    <script src="{{ asset('') }}" defer></script>
+    <script src="{{ asset('') }}" defer></script>
 
+<script>
+    // var table = $('#table').removeAttr('width').DataTable( {
+    //     scrollY:        "300px",
+    //     scrollX:        true,
+    //     scrollCollapse: true,
+    //     paging:         false,
+    //     columnDefs: [
+    //         { width: 200, targets: 0 }
+    //     ],
+    //     fixedColumns: true
+    // } );
+</script>
 
 </body>
 </html>

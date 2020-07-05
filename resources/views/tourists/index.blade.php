@@ -1,38 +1,50 @@
 @extends('layouts/app')
 
 @section('content')
-    <div class="row">
-        <div class="col-lg-12 margin-tb">
-            <div class="pull-left">
-                <h2>Lista turisti</h2>
-            </div>
-        </div>
-    </div>
 
     @if ($message = Session::get('success'))
         <div class="alert alert-success">
             <p>{{ $message }}</p>
         </div>
     @endif
+<div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="sparkline13-list shadow-reset">
+                                <div class="sparkline13-hd">
+<div class="main-sparkline13-hd">
+                                        <h1>Lista turisti
 
-    <table class="table table-bordered">
-        <tr>
-            <th>No</th>
-            <th>Nume</th>
-            <th>Prenume</th>
-            <td>Email</td>
-            <td>Telefon</td>
-            <th>Cod Promo</th>
-            <th>Hotel</th>
-            <th>Data checkin</th>
-            <th>Data si ora checkout</th>
-            <th>Oras</th>
-            <th>Tara</th>
-            @if($user->user_type < 3 )
-              <th width="280px">Action</th>
-            @endif
-        </tr>
-        @foreach ($tourists as $tourist)
+
+                                        </h1>
+
+                                    </div>
+                                </div>
+                                <div class="sparkline13-graph">
+                                  <div class="dataTables_scroll">
+                                    <div class="datatable-dashv1-list custom-datatable-overright">
+
+                                        <table id="table" data-toggle="table" data-toggle="table" data-pagination="true" data-search="true" data-show-columns="true" data-show-pagination-switch="true" data-key-events="true" data-show-toggle="true" data-resizable="true" data-cookie="true" data-cookie-id-table="saveId" data-show-export="true" data-click-to-select="true" data-toolbar="#toolbar" data-height="700">
+                                            <thead>
+                                                <tr>
+                                                    <th data-field="id">No</th>
+                                                    <th data-field="nume">Nume</th>
+                                                    <th data-field="prenume">Prenume</th>
+                                                    <th data-field="email">Email</th>
+                                                    <th data-field="telefon">Telefon</th>
+                                                    <th data-field="promo_code">Cod Promo</th>
+                                                    <th data-field="hotel">Hotel</th>
+                                                    <th data-field="check-in">Data checkin</th>
+                                                    <th data-field="checkout">Data si ora checkout</th>
+                                                    <th data-field="oras">Oras</th>
+                                                    <th data-field="tara">Tara</th>
+                                                    @if($user->user_type < 3 )
+                                                    <th data-field="action">Action</th>
+                                                    @endif
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                           @foreach ($tourists as $tourist)
         <tr>
             <td>{{ ++$i }}</td>
             <td>{{ $tourist->nume }}</td>
@@ -68,8 +80,17 @@
              @endif
         </tr>
         @endforeach
-    </table>
 
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
 
 @endsection

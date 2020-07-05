@@ -4,68 +4,71 @@
 	 /*----------------------------------------*/
 	/*  1.  Basic Line Chart
 	/*----------------------------------------*/
-	let draw = Chart.controllers.line.prototype.draw;
-Chart.controllers.line.prototype.draw = function() {
-    draw.apply(this, arguments);
-    let ctx = this.chart.chart.ctx;
-    let _stroke = ctx.stroke;
-    ctx.stroke = function() {
-        ctx.save();
-        ctx.shadowColor = '#07C';
-        ctx.shadowBlur = 20;
-        ctx.shadowOffsetX = 2;
-        ctx.shadowOffsetY = 20;
-        _stroke.apply(this, arguments);
-        ctx.restore();
-    }
-};
-
-var ctx = document.getElementById("basiclinechart");
-let myChart = new Chart(ctx, {
-    type: 'line',
+	var ctx = document.getElementById("basiclinechart");
+	var basiclinechart = new Chart(ctx, {
+		type: 'line',
+		data: {
+			labels: ["January", "February", "March", "April", "May", "June", "July"],
+			datasets: [{
+				label: "My First dataset",
+				fill: false,
+                backgroundColor: '#006DF0',
+				borderColor: '#006DF0',
+				data: [3, -5, -2, 3, 9, 12, 19]
+            }, {
+                label: "My Second dataset",
+				fill: false,
+                backgroundColor: '#933EC5',
+				borderColor: '#933EC5',
+				data: [-12, -3, -4, 6, 3, 7, 10]
+				
+		}]
+		},
+		options: {
+			responsive: true,
+			title:{
+				display:true,
+				text:'Basic Line Chart'
+			},
+			tooltips: {
+				mode: 'index',
+				intersect: false,
+			},
+			hover: {
+				mode: 'nearest',
+				intersect: true
+			},
+			scales: {
+				xAxes: [{
+					ticks: {
+						autoSkip: false,
+						maxRotation: 0
+					},
+					ticks: {
+					  fontColor: "#fff", // this here
+					},
+					scaleLabel: {
+						display: true,
+						labelString: 'Month'
+					}
+				}],
+				yAxes: [{
+					ticks: {
+						autoSkip: false,
+						maxRotation: 0
+					},
+					ticks: {
+					  fontColor: "#fff", // this here
+					},
+					scaleLabel: {
+						display: true,
+						labelString: 'Value'
+					}
+				}]
+			}
+		}
+	});
 	
-    data: {
-        labels: ["January", "February", "March", "April", "May", "June", "July"],
-        datasets: [{
-            data: [65, 59, 75, 64, 70, 30, 40],
-            borderColor: '#07C',
-            pointBackgroundColor: "#FFF",
-            pointBorderColor: "#07C",
-            pointHoverBackgroundColor: "#07C",
-            pointHoverBorderColor: "#FFF",
-            pointRadius: 4,
-            pointHoverRadius: 4,
-            fill: false,
-            tension: 0.15
-        }]
-    },
-    options: {
-        responsive: false,
-        tooltips: {
-            displayColors: false,
-            callbacks: {
-                label: function(e, d) {
-                    return;
-                },
-                title: function() {
-                    return;
-                }
-            }
-        },
-        legend: {
-            display: false
-        },
-        scales: {
-            yAxes: [{
-                ticks: {
-                    max: 90
-                }
-            }]
-        }
-    }
-});
-
-
 	 /*----------------------------------------*/
 	/*  2.  Line Chart Multi axis
 	/*----------------------------------------*/
@@ -77,15 +80,15 @@ let myChart = new Chart(ctx, {
 			datasets: [{
 				label: "My First dataset",
 				fill: false,
-                backgroundColor: '#303030',
-				borderColor: '#303030',
+                backgroundColor: '#006DF0',
+				borderColor: '#006DF0',
 				data: [3, -5, -2, 3, 9, 12, 19],
 				yAxisID: "y-axis-1"
             }, {
                 label: "My Second dataset",
 				fill: false,
-                backgroundColor: '#03a9f4',
-				borderColor: '#03a9f4',
+                backgroundColor: '#933EC5',
+				borderColor: '#933EC5',
 				data: [-12, -3, -4, 6, 3, 7, -20],
 				yAxisID: "y-axis-2"
 				
@@ -129,8 +132,8 @@ let myChart = new Chart(ctx, {
 			datasets: [{
 				label: "steppedLine",
 				fill: false,
-                backgroundColor: '#303030',
-				borderColor: '#303030',
+                backgroundColor: '#006DF0',
+				borderColor: '#006DF0',
 				data: [3, -5, -2, 3, 9, 12, 19]
             }]
 		},
@@ -175,22 +178,22 @@ let myChart = new Chart(ctx, {
 			datasets: [{
 				label: "Cubic interpolation",
 				fill: false,
-                backgroundColor: '#303030',
-				borderColor: '#303030',
+                backgroundColor: '#006DF0',
+				borderColor: '#006DF0',
 				data: [0, 15, 17, 200, 0, 12, -200, 5, 200, 8, 200, 12, 200],
 				cubicInterpolationMode: 'monotone'
             }, {
                 label: "Cubic interpolation",
 				fill: false,
-                backgroundColor: '#03a9f4',
-				borderColor: '#03a9f4',
+                backgroundColor: '#933EC5',
+				borderColor: '#933EC5',
 				data: [-100, 200, 12, -200, 12, 200, 8, -200, 9, 200, -200, -12, -200]
 				
 		}, {
                 label: "Linear interpolation",
 				fill: false,
-                backgroundColor: '#ff0000',
-				borderColor: '#ff0000',
+                backgroundColor: '#D80027',
+				borderColor: '#D80027',
 				data: [-8, -9, -10, -11, 0, 0, 0, 12, 10, 8, 9, 7, 12],
 				lineTension: 0
 				
@@ -241,22 +244,22 @@ let myChart = new Chart(ctx, {
 			datasets: [{
 				label: "Unfilled",
 				fill: false,
-                backgroundColor: '#303030',
-				borderColor: '#303030',
+                backgroundColor: '#006DF0',
+				borderColor: '#006DF0',
 				data: [0, 15, 17, 200, 0, 12, -200, 5]
             }, {
                 label: "Dashed",
 				fill: false,
-                backgroundColor: '#03a9f4',
-				borderColor: '#03a9f4',
+                backgroundColor: '#933EC5',
+				borderColor: '#933EC5',
 				borderDash: [5, 5],
 				data: [-100, 200, 12, -200, 12, 200, 8]
 				
 		}, {
                 label: "Filled",
 				fill: true,
-                backgroundColor: '#ff0000',
-				borderColor: '#ff0000',
+                backgroundColor: '#D80027',
+				borderColor: '#D80027',
 				data: [-200, -9, 200, -11, 0, -200, 0]
 				
 		}]
@@ -308,8 +311,8 @@ let myChart = new Chart(ctx, {
 			labels: ["January", "February", "March", "April", "May", "June", "July"],
 			datasets: [{
 				label: "My First dataset",
-				backgroundColor: '#03a9f4',
-				borderColor: '#03a9f4',
+				backgroundColor: '#006DF0',
+				borderColor: '#006DF0',
 				data: [0, 10, 20, 30, 40, 50, 60],
 				fill: false,
 				pointRadius: 4,
@@ -364,8 +367,8 @@ let myChart = new Chart(ctx, {
 			labels: ["January", "February", "March", "April", "May", "June", "July"],
 			datasets: [{
 				label: "My First dataset",
-				backgroundColor: '#03a9f4',
-				borderColor: '#03a9f4',
+				backgroundColor: '#006DF0',
+				borderColor: '#006DF0',
 				data: [60, 50, 40, 30, 20, 10, 0],
 				fill: false,
 				pointRadius: 6,
@@ -420,8 +423,8 @@ let myChart = new Chart(ctx, {
 			labels: ["January", "February", "March", "April", "May", "June", "July"],
 			datasets: [{
 				label: "My First dataset",
-				backgroundColor: '#03a9f4',
-				borderColor: '#03a9f4',
+				backgroundColor: '#006DF0',
+				borderColor: '#006DF0',
 				data: [0, 10, 60, 30, 0, 80, 60],
 				fill: false,
 				pointRadius: 6,

@@ -138,14 +138,5 @@
 					$("#slider3").slider("value") 
 				);
 				
-				
-	
-		
-            
-			
-
-		
-
-	
  
 })(jQuery); 

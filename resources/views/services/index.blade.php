@@ -22,18 +22,30 @@
             <p>{{ $message }}</p>
         </div>
     @endif
+<div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="sparkline13-list shadow-reset">
+<div class="pull-left">
+                <a class="btn btn-success" href="{{ route('services.create') }}"> Adaugare prestator</a>
+            </div>
+                                <div class="sparkline13-graph">
+                                    <div class="datatable-dashv1-list custom-datatable-overright">
 
-    <table class="table table-bordered">
-        <tr>
-            <th>No</th>
-            <th>Nume</th>
-            <th>Email</th>
-            <th>Nume Contact</th>
-            <th>Email Contact</th>
-            <th>Turisti cu cod</th>
-            <th width="280px">Action</th>
-        </tr>
-        @foreach ($services as $service)
+                                        <table id="table" data-toggle="table" data-toggle="table" data-pagination="true" data-search="true" data-show-columns="true" data-show-pagination-switch="true" data-key-events="true" data-show-toggle="true" data-resizable="true" data-cookie="true" data-cookie-id-table="saveId" data-show-export="true" data-click-to-select="true" data-toolbar="#toolbar" data-height="700">
+                                            <thead>
+                                                <tr>
+                                                    <th data-field="id">No</th>
+                                                    <th data-field="nume">Nume</th>
+                                                    <th data-field="email">Email</th>
+                                                    <th data-field="nume_contact">Nume Contact</th>
+                                                    <th data-field="email_contact">Email Contact</th>
+                                                    <th data-field="turisti_cod">Turisti cu cod</th>
+                                                    <th data-field="action">Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                           @foreach ($services as $service)
         <tr>
             <td>{{ ++$i }}</td>
             <td>{{ $service->nume }}</td>
@@ -62,8 +74,15 @@
             </td>
         </tr>
         @endforeach
-    </table>
 
-
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
 @endsection

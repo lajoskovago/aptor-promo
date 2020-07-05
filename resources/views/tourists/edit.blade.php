@@ -1,16 +1,7 @@
 @extends('layouts/app')
 
 @section('content')
-<div class="row">
-    <div class="col-lg-12 margin-tb">
-        <div class="pull-left">
-            <h2>Editare turist</h2>
-        </div>
-        <div class="pull-right">
-            <a class="btn btn-primary" href="{{ url()->previous() }}"> Inapoi</a>
-        </div>
-    </div>
-</div>
+
 
 @if ($errors->any())
     <div class="alert alert-danger">
@@ -27,102 +18,109 @@
 @csrf
 @method('PUT')
 
-<div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Data si ora plecarii:</strong>
-                <input type="text" data-format="dd/MM/yyyy hh:mm:ss" name="checkout_timestamp" id="datetimepicker1"
-                class="form-control form-control-warning" value="{{ $tourist->checkout_timestamp }}">
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Nume:</strong>
-                <input type="text" name="nume" class="form-control" value="{{ $tourist->nume }}">
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Prenume:</strong>
-                <input type="text" name="prenume" class="form-control"  value="{{ $tourist->prenume }}">
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Email:</strong>
-                <input type="text" name="email" class="form-control"  value="{{ $tourist->email }}">
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Telefon:</strong>
-                <input type="phone" name="telefon" class="form-control"  value="{{ $tourist->telefon }}">
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Checkin:</strong>
-                <input type="date" name="checkin_date" class="form-control"  value="{{ $tourist->checkin_date }}">
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Checkout:</strong>
-                <input type="date" name="checkout_date" class="form-control"  value="{{ $tourist->checkout_date }}">
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Oras:</strong>
-                <input type="text" name="oras" class="form-control"  value="{{ $tourist->oras }}">
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Tara:</strong>
-                <input type="text" name="tara" class="form-control"  value="{{ $tourist->tara }}">
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Transport:</strong>
-                <input type="text" name="transport" class="form-control"  value="{{ $tourist->transport }}">
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Scop:</strong>
-                <label for="Turism"><input type="radio" name="scop" value="Turism" class="form-control"
-                @if($tourist->scop == 'Turism')
-                  checked
-                @endif
-                >Turism
 
-                </label>
-                <label for="Business"><input type="radio" name="scop" value="Business" class="form-control"
-                @if($tourist->scop == 'Business')
-                  checked
-                @endif
-                >Business</label>
+<!-- Single pro tab review Start-->
+        <div class="single-pro-review-area mt-t-30 mg-b-15">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="product-payment-inner-st">
+                            <ul id="myTabedu1" class="tab-review-design">
+                                <li class="active"><a href="#description">Editare Turist</a></li>
+                            </ul>
+                            <div id="myTabContent" class="tab-content custom-product-edit">
+                                <div class="product-tab-list tab-pane fade active in" id="description">
+                                    <div class="row">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <div class="review-content-section">
+                                                <div id="dropzone1" class="pro-ad addcoursepro">
+
+                                                        <div class="row">
+                                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                            <div class="form-group">
+                                                                    Detalii turist
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <input name="nume" type="text" class="form-control" placeholder="Nume turist" required value="{{ $tourist->nume }}">
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <input name="prenume" type="text" class="form-control" placeholder="Prenume turist" required value="{{ $tourist->prenume }}">
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <input name="email" type="email" class="form-control" placeholder="Email turist" required value="{{ $tourist->email }}">
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <input name="telefon"  type="text" class="form-control" placeholder="Telefon turist" required value="{{ $tourist->telefon }}">
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <input name="oras"  type="text" class="form-control" placeholder="Localitate de domiciliu" required  value="{{ $tourist->oras }}">
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <input name="tara"  type="text" class="form-control" placeholder="Tara de resedinta" required  value="{{ $tourist->tara }}">
+                                                                </div>
+
+
+
+                                                            </div>
+                                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                              <div class="form-group">
+                                                                    Detalii calatorie
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <input type="date" name="checkin_date" class="form-control" placeholder="Data check-in" required value="{{ $tourist->checkin_date }}">
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <input type="date" name="checkout_date" class="form-control" placeholder="Data check-out" required value="{{ $tourist->checkout_date }}">
+                                                                </div>
+                                                              <div class="form-group">
+                                                                    <input type="text" name="transport" class="form-control" placeholder="Transport" required value="{{ $tourist->transport }}">
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <input type="text" name="voucher" class="form-control" placeholder="Voucher" required value="{{ $tourist->voucher }}">
+                                                                </div>
+                                                                <div class="form-group">
+                                                                   Scop calatorie
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <div class="i-checks pull-left">
+                                                                      <label><input type="radio"
+                                                                       @if($tourist->scop == 'Turism')
+                                                                        checked
+                                                                       @endif
+                                                                       value="Turism" name="scop"> <i></i> Turism </label>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <div class="i-checks pull-left">
+                                                                      <label><input type="radio"
+                                                                       @if($tourist->scop == 'Business')
+                                                                        checked
+                                                                       @endif
+                                                                       value="Business" name="scop"> <i></i> Business </label>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-lg-12">
+                                                                <div class="payment-adress">
+                                                                    <button type="submit" class="btn btn-primary waves-effect waves-light">Editare</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Voucher:</strong>
-                <input type="text" name="voucher" class="form-control"  value="{{ $tourist->voucher }}">
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                <button type="submit" class="btn btn-primary">Editare</button>
-        </div>
-    </div>
+
+
 </form>
 
-<script type="text/javascript">
-  $(function() {
-    $('#datetimepicker1').datetimepicker({
-      language: 'pt-BR'
-    });
-  });
-</script>
 @endsection

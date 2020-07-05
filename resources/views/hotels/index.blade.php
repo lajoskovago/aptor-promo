@@ -29,7 +29,7 @@
                                                 <tr>
                                                     <th data-field="id">No</th>
                                                     <th data-field="nume">Nume</th>
-                                                    <th data-field="nume">Email</th>
+                                                    <th data-field="email">Email</th>
                                                     <th data-field="nume_contact">Nume Contact</th>
                                                     <th data-field="email_contact">Email Contact</th>
                                                     <th data-field="action">Action</th>

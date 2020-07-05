@@ -26,7 +26,6 @@
 	text-align:center;
 	background:#fff;
 	padding:20px 100px;
-	margin-bottom:30px;
 }
 .tab-content-details h2{
 	font-size:20px;
@@ -38,11 +37,11 @@
 	line-height:24px;
 }
 .nav-tabs.custom-menu-wrap li a:hover{
-	background:#303030;
+	background:#006DF0;
 	color:#fff;
 }
 .nav-tabs.custom-menu-wrap li a{
-	color:#fff;
+	color:#444;
 }
 .nav-tabs.custom-menu-wrap li.active a{
 	color:#303030;

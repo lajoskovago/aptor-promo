@@ -1,6 +1,8 @@
 (function ($) {
  "use strict";
 		// Masking form
+		$('#postcode').mask('9999', {placeholder:'X'});
+		$('#year').mask('9999', {placeholder:'X'});
 		$('#cvv').mask('999', {placeholder:'X'});
 		$('#card').mask('9999-9999-9999-9999', {placeholder:'X'});
 		$("#phone").mask('(999) 999-9999', {placeholder:'X'});

@@ -7,8 +7,43 @@
                 <h2>Lista servicii</h2>
             </div>
         </div>
+        <div class="col-lg-12 margin-tb">
+            <div class="pull-left">
+                <h2></h2>
+            </div>
+        </div>
         <div class="pull-right">
-            <a class="btn btn-primary" href="{{ url()->previous() }}"> Inapoi</a>
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12 margin-tb">
+            <div class="pull-left">
+                <h2></h2>
+            </div>
+        </div>
+        <div class="col-lg-12 margin-tb">
+            <div class="pull-left">
+                <h2></h2>
+            </div>
+        </div>
+        <div class="pull-right">
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12 margin-tb">
+            <div class="pull-left">
+                <h2></h2>
+            </div>
+        </div>
+        <div class="col-lg-12 margin-tb">
+            <div class="pull-left">
+                <h2></h2>
+            </div>
+        </div>
+        <div class="pull-right">
+
         </div>
     </div>
 
@@ -17,6 +52,7 @@
             <p>{{ $message }}</p>
         </div>
     @endif
+  <div class="container-fluid">
 <form action="{{ route('options.apply') }}" method="POST">
     @csrf
 
@@ -44,7 +80,7 @@
                 <button type="submit" class="btn btn-primary">Aplica cod</button>
         </div>
     </form>
-
+</div>
 
 
 @endsection

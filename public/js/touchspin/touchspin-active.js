@@ -23,9 +23,5 @@
 		buttondown_class: 'btn btn-white',
 		buttonup_class: 'btn btn-white'
 	});
-
-
-	
-	
  
 })(jQuery); 

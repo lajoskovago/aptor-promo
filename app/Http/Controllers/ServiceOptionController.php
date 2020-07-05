@@ -159,7 +159,7 @@ $user = Auth::user();
     public function apply($touristId)
     {
        $serviceOption = ServiceOption::latest()->get();
-
+$user = Auth::user();
       return view('service_options.apply',compact('serviceOption', 'touristId', 'user'))->with('i', 0);
     }
 

@@ -26,8 +26,6 @@ class ServiceController extends Controller
             return redirect()->route('login');
         }
 
-
-
         $services = Service::latest()->paginate(5);
 
         foreach($services as $i => $key) {
@@ -175,16 +173,18 @@ $user = Auth::user();
 
             return redirect()->route('login');
         }
+
+
         $tourist = Tourist::find($touristId);
         $serviciiFolosite = CodeUsage::where('promo_code', $tourist->promo_code)->get();
 
         $prestatori = [];
         foreach($serviciiFolosite as $key) {
-          $prestatori[$key->id] = $key->id;
+          $prestatori[$key->service_id] = $key->service_id;
         }
-        $services = Service::whereIn('id', $prestatori)->paginate(5);
+        $services = Service::whereIn('id', $prestatori)->get();
 
         return view('services.index',compact('services', 'user'))
-            ->with('i', (request()->input('page', 1) - 1) * 5);
+            ->with('i', 0);
     }
 }

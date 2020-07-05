@@ -49,4 +49,3 @@
 	})( jQuery );
 	$('#recipient_email').multipleInput();
 
-

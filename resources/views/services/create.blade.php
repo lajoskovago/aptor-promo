@@ -27,47 +27,73 @@
 <form action="{{ route('services.store') }}" method="POST">
     @csrf
 
-     <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Nume:</strong>
-                <input type="text" name="nume" class="form-control" placeholder="Nume prestator">
+
+<!-- Single pro tab review Start-->
+        <div class="single-pro-review-area mt-t-30 mg-b-15">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="product-payment-inner-st">
+                            <ul id="myTabedu1" class="tab-review-design">
+                                <li class="active"><a href="#description">Adaugare Prestator</a></li>
+                            </ul>
+                            <div id="myTabContent" class="tab-content custom-product-edit">
+                                <div class="product-tab-list tab-pane fade active in" id="description">
+                                    <div class="row">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <div class="review-content-section">
+                                                <div id="dropzone1" class="pro-ad addcoursepro">
+
+                                                        <div class="row">
+                                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                            <div class="form-group">
+                                                                    Detalii Prestator
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <input name="nume" type="text" class="form-control" placeholder="Denumire prestator" required>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <input name="email" id="finish" type="email" class="form-control" placeholder="Email prestator" required>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <input name="password" type="text" class="form-control" placeholder="Parola" required>
+                                                                </div>
+
+
+                                                            </div>
+                                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                            <div class="form-group">
+                                                                    Detalii Contact
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <input name="nume_contact" type="text" class="form-control" placeholder="Nume contact" required>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <input name="prenume_contact" type="text" class="form-control" placeholder="Prenume Contact" required>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <input name="email_contact" type="email" class="form-control" placeholder="Email Contact" required>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-lg-12">
+                                                                <div class="payment-adress">
+                                                                    <button type="submit" class="btn btn-primary waves-effect waves-light">Adaugare</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Email:</strong>
-                <input type="text" name="email" class="form-control" placeholder="Email">
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Nume Contact:</strong>
-                <input type="text" name="nume_contact" class="form-control" placeholder="Nume persoana contact">
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Prenume Contact:</strong>
-                <input type="text" name="prenume_contact" class="form-control" placeholder="Prenume persoana contact">
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Email Contact:</strong>
-                <input type="text" name="email_contact" class="form-control" placeholder="Email(poate fi la fel ca cel al prestatorului)">
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Parola:</strong>
-                <input type="text" name="password" class="form-control" placeholder="parola">
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                <button type="submit" class="btn btn-primary">Adaugare</button>
-        </div>
-    </div>
 
 </form>
 @endsection
